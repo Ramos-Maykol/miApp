@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/products"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ productId ? 'Editar Producto' : 'Nuevo Producto' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+    <ion-list>
+      <ion-item>
+        <ion-input
+          label="Nombre del producto"
+          labelPlacement="floating"
+          type="text"
+          formControlName="nombre">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input
+          label="Precio"
+          labelPlacement="floating"
+          type="number"
+          formControlName="precio">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input
+          label="Stock"
+          labelPlacement="floating"
+          type="number"
+          formControlName="stock">
+        </ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-button
+      type="submit"
+      expand="block"
+      class="ion-margin-top"
+      [disabled]="!productForm.valid">
+      <ion-icon name="save-outline" slot="start"></ion-icon>
+      {{ productId ? 'Actualizar' : 'Crear' }} Producto
+    </ion-button>
+  </form>
+</ion-content>
